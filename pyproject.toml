@@ -1,6 +1,6 @@
 [project]
 name = "vectorized-lerp-interpolation"
-version = "0.1.1"
+version = "0.1.2"
 description = "Interpolates between values, point arrays, and along parametric segments."
 requires-python = ">=3.10"
 dependencies = []
