@@ -31,3 +31,10 @@ The trade-off is that `lerp` always returns a float, even when both inputs are i
 - Mixed scalar and sequence points in `lerp_segment` raise `TypeError`; there is no implicit broadcasting.
 - `lerp_array` requires all three arguments to have the same length (a scalar `t` is broadcast). Mismatched lengths raise `ValueError`.
 - `steps` in `lerp_segment` must be at least 1. When `steps > 1` and `t` is a scalar, it generates evenly spaced samples from 0 to 1 inclusive.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
